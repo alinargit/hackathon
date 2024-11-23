@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot in the Corner with Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-height: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            z-index: 1000;
+        }
+        .chat-box {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .user-message {
+            text-align: right;
+            margin: 5px;
+            padding: 5px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+        }
+        .bot-message {
+            text-align: left;
+            margin: 5px;
+            padding: 5px;
+            background-color: #ffeb3b;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 15%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Chatbot toggle button -->
+<div class="chat-toggle-btn" onclick="toggleChat()">💬</div>
+
+<!-- Chatbot container -->
+<div class="chat-container" id="chat-container">
+    <div class="chat-box" id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    const chatContainer = document.getElementById('chat-container');
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+
+    function toggleChat() {
+        if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+            chatContainer.style.display = 'flex';
+        } else {
+            chatContainer.style.display = 'none';
+        }
+    }
+
+    function sendMessage() {
+        const userMessage = userInput.value.trim();
+        if (userMessage !== '') {
+            displayMessage(userMessage, 'user');
+            getBotResponse(userMessage);
+            userInput.value = '';
+        }
+    }
+
+    function displayMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+        messageDiv.textContent = message;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to the bottom
+    }
+
+    function getBotResponse(userMessage) {
+        let botMessage = 'Sorry, I don\'t understand that.';
+        
+        if (userMessage.toLowerCase().includes('hello')) {
+            botMessage = 'Hello! How can I assist you today?';
+        } else if (userMessage.toLowerCase().includes('how are you')) {
+            botMessage = 'I\'m doing great, thank you for asking!';
+        } else if (userMessage.toLowerCase().includes('bye')) {
+            botMessage = 'Goodbye! Have a great day!';
+        }
+
+        setTimeout(() => {
+            displayMessage(botMessage, 'bot');
+        }, 1000);  // Simulate delay for bot response
+    }
+</script>
+
+</body>
+</html>

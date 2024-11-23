@@ -74,3 +74,17 @@ const swiper = new Swiper(".swiper", {
   spaceBetween: 20,
   loop: true,
 });
+async function queryAI(userInput) {
+    const response = await fetch('/api/ai', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ input: userInput }),
+    });
+
+    const data = await response.json();
+    console.log('AI response:', data.result);
+}
+//ChatBot
+
