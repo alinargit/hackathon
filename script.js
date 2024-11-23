@@ -88,3 +88,56 @@ async function queryAI(userInput) {
 }
 //ChatBot
 
+function sendMessage() {
+  const userInput = document.getElementById('user-input').value;
+  const chatBox = document.getElementById('chat-box');
+
+  if (userInput.trim() === "") return; // Don't send empty messages
+
+  // Display user message
+  const userMessageDiv = document.createElement('div');
+  userMessageDiv.classList.add('message', 'user-message');
+  const userMessageText = document.createElement('p');
+  userMessageText.textContent = userInput;
+  userMessageDiv.appendChild(userMessageText);
+  chatBox.appendChild(userMessageDiv);
+
+  // Scroll to the bottom of the chat box
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  // Clear the input field
+  document.getElementById('user-input').value = "";
+
+  // Bot response (simple predefined response)
+  setTimeout(function() {
+      const botMessageDiv = document.createElement('div');
+      botMessageDiv.classList.add('message', 'bot-message');
+      const botMessageText = document.createElement('p');
+      botMessageText.textContent = "I'm here to help!";
+      botMessageDiv.appendChild(botMessageText);
+      chatBox.appendChild(botMessageDiv);
+
+      // Scroll to the bottom of the chat box
+      chatBox.scrollTop = chatBox.scrollHeight;
+  }, 1000); // Bot response delay (1 second)
+}
+
+function initMap() {
+  // Coordinates for the map's center (Eiffel Tower, Paris)
+  const location = { lat: 48.8588443, lng: 2.2943506 };
+
+  // Create the map
+  const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 17,                    // Adjust zoom for 3D view
+      center: location,            // Set center location
+      mapTypeId: "satellite",      // Use satellite map type
+      tilt: 45                     // Enable 3D tilt
+  });
+
+  // Add a marker
+  const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      title: "Eiffel Tower"
+  });
+}
