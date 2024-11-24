@@ -12,14 +12,110 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Travel</title>
+    <title>Fly Away</title>
+
+    <style>
+      /* Styling for the iframe container */
+      #chatbot-container {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          width: 400px;
+          height: 500px;
+          display: none; /* Hidden by default */
+          z-index: 1000;
+      }
+
+      /* Styling for the iframe */
+      #chatbot-iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Close button styling */
+      #close-chatbot {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          background-color: #ff4d4d;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          font-size: 16px;
+          text-align: center;
+          cursor: pointer;
+          z-index: 1001;
+      }
+
+      /* Styling for the chat icon button */
+      #chatbot-icon {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          width: 60px;
+          height: 60px;
+          background-color: transparent;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          z-index: 1000;
+      }
+
+      /* Styling for the chat icon image */
+      #chatbot-icon img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    </style>
   </head>
   <body>
+    <!-- Content of your website -->
+    
+    <!-- Chatbot container -->
+    <div id="chatbot-container">
+        <button id="close-chatbot">×</button>
+        <iframe 
+            id="chatbot-iframe"
+            src="https://app.chatlab.com#/shareclient?apiKey=e9769bcd-f16c-4cb1-aab2-9a89cfa183a4&providerId=f9e9c5e4-6d1a-4b8c-8d3f-3f9e9c5e46d1&mode=iframe">
+        </iframe>
+    </div>
+
+    <!-- Chatbot toggle button with an icon -->
+    <button id="chatbot-icon">
+        <img src="assets/images-removebg-preview.png" alt="Chat Icon">
+    </button>
+
+    <!-- Chatbot toggle script -->
+    <script>
+        // Get references to elements
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        const closeChatbot = document.getElementById('close-chatbot');
+
+        // Show iframe and hide icon
+        chatbotIcon.addEventListener('click', () => {
+            chatbotContainer.style.display = 'block'; // Show iframe container
+            chatbotIcon.style.display = 'none'; // Hide icon
+        });
+
+        // Hide iframe and show icon
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.style.display = 'none'; // Hide iframe container
+            chatbotIcon.style.display = 'flex'; // Show icon
+        });
+    </script>
     
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <a href="#" class="logo">Traveler</a>
+          <a href="#" class="logo">FLY AWAY</a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
@@ -34,7 +130,7 @@
         <li><a href="#">BOOK TRIP</a></li>
       </ul>
       <div class="nav__btns">
-        <button class="btn">BOOK TRIP</button>
+       
       </div>
     </nav>
 
@@ -45,7 +141,7 @@
           <h1>Experience The Magic Of Flight!</h1>
           <div class="header__btns">
             <button class="btn">Book A Trip Now</button>
-            <a href="#">
+            <a href="https://www.booking.com/">
               <span><i class="ri-play-circle-fill"></i></span>
             </a>
           </div>
@@ -63,7 +159,7 @@
       </p>
       <div class="destination__grid">
         <div class="destination__card">
-          <img src="assets/destination-1.jpg" alt="destination" />
+          <img src="assets/DALL·E 2024-11-24 15.02.36 - A stunning cityscape of New York City, showcasing iconic landmarks. The scene features the Manhattan skyline with the Empire State Building and One Wo.webp" alt="destination" />
           <div class="destination__card__details">
             <div>
               <h4>Tradition and Futurism</h4>
@@ -76,7 +172,7 @@
           </div>
         </div>
         <div class="destination__card">
-          <img src="assets/destination-2.jpg" alt="destination" />
+          <img src="assets/DALL·E 2024-11-24 14.44.10 - A breathtaking nighttime view of Paris, France, also known as 'The City of Lights.' The scene showcases the Eiffel Tower illuminated with golden light.webp" alt="destination" />
           <div class="destination__card__details">
             <div>
               <h4>The City of Lights</h4>
@@ -89,7 +185,7 @@
           </div>
         </div>
         <div class="destination__card">
-          <img src="assets/destination-3.jpg" alt="destination" />
+          <img src="assets/DALL·E 2024-11-24 14.52.32 - A breathtaking landscape of Bali, Indonesia, often referred to as the 'Island of the Gods.' The scene features lush green rice terraces cascading down.webp" alt="destination" />
           <div class="destination__card__details">
             <div>
               <h4>Island of the Gods</h4>
@@ -160,23 +256,23 @@
 
     <section class="section__container showcase__container" id="package">
       <div class="showcase__image">
-        <img src="assets/showcase.jpg" alt="showcase" />
+        <img src="assets/DALL·E 2024-11-24 14.54.38 - A joyful little girl playing on a sunny beach. She is laughing and running barefoot on the soft golden sand, wearing a bright summer dress and a wide-.webp" width="550px"height="480px"alt="showcase" />
       </div>
       <div class="showcase__content">
-        <h4>UNLEASH WANDERLUST WITH SKYWINGS</h4>
+        <h4>UNLEASH WANDERLUST WITH FLY AWAY</h4>
         <p>
-          Embark on a journey like no other with Skywings, where your travel
+          Embark on a journey like no other with Fly Away, where your travel
           dreams come to life. Our mission is to inspire and facilitate your
           adventures, whether you seek the vibrant energy of bustling
           cityscapes, the serene beauty of pristine beaches, or the captivating
-          history of ancient landmarks. At Skywings, we provide expertly curated
+          history of ancient landmarks. At Fly Away, we provide expertly curated
           destinations and personalized itineraries, ensuring that every trip is
           tailored to your unique preferences. Discover hidden gems, immerse
           yourself in diverse cultures, and create unforgettable memories that
           will last a lifetime.
         </p>
         <p>
-          With Skywings as your ultimate travel companion, exploring the wonders
+          With Fly Away as your ultimate travel companion, exploring the wonders
           of the world has never been easier. Our insider tips and local
           insights give you the tools to navigate new places with confidence and
           excitement. From the moment you start planning to the day you return
@@ -262,10 +358,10 @@
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  Traveler has completely transformed my travel experience. From
+                  Fly Away has completely transformed my travel experience. From
                   finding hidden gems in bustling cities to discovering serene
                   retreats off the beaten path, every detail was thoughtfully
-                  arranged. I can't recommend Skywings enough for anyone looking
+                  arranged. I can't recommend Fly Away enough for anyone looking
                   to elevate their travel experience!
                 </p>
               </div>
@@ -289,7 +385,7 @@
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  My recent adventure with Traveler was nothing short of
+                  My recent adventure with Fly Away was nothing short of
                   spectacular. The personalized itineraries and recommendations
                   they provided led me to extraordinary locations that I would
                   never have found on my own. I'm already planning my next
@@ -316,7 +412,7 @@
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  Traveler offered a transformative experience for my research
+                  Fly Away offered a transformative experience for my research
                   into historical landmarks. The unique aerial perspectives and
                   provided a new level of appreciation and insight into the
                   sites I studied. I highly recommend their services to fellow
@@ -344,7 +440,7 @@
                 </div>
                 <p>
                   Finding a balance between work and travel can be challenging,
-                  but Traveler made it effortless. Their efficient planning and
+                  but Fly Away made it effortless. Their efficient planning and
                   excellent recommendations helped me maximize my downtime and
                   enjoy every moment of my trip. I look forward to working with
                   them again on future travels.
@@ -427,7 +523,9 @@
         Copyright © 2024 Web Design Mastery. All rights reserved.
       </div>
     </footer>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgogcxoLtY4PWVegt1J7OWCsg1vFt6to&callback=initMap" async defer></script>
-    <script src="script.js"></script>
+      
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt1Ys9geWzx7Y2_QAakvzi_l0XdOdToE0&callback=initMap" async defer></script>
+    <script src="script.js"></script> 
+    
   </body>
 </html>
